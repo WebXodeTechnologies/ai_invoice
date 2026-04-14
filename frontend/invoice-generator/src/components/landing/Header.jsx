@@ -9,7 +9,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
-  const isAuthenticated = true; 
+  const isAuthenticated = false; 
   const user = { name: 'Akash S M', email: 'mail2meak22frcrio@gmail.com' };
   const navigate = useNavigate();
 
