@@ -1,4 +1,3 @@
-
 import { BarChart2, FileText, Mail, Sparkles } from "lucide-react";
 
 export const FEATURES = [
