@@ -5,7 +5,7 @@ const Hero = () => {
 
   return (
     <section className="relative bg-[#fbfbfb] overflow-hidden">
-      <div className="absolute inset-0 bg-grid-white/[0.5] bg-[size:60px_60px]"></div>
+      <div className="absolute inset-0 bg-grid-white/[0.5] bg-size-[60px_60px]"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-32">
         <div className="text-center max-w-4xl mx-auto">
