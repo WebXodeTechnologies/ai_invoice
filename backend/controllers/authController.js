@@ -78,7 +78,20 @@ exports.loginUser = async (req, res) => {
 
 exports.getMe = async (req, res) => {
   try {
+    if (!req.user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({
+      _id: req.user._id,
+      name: req.user.name,
+      email: req.user.email,
+      businessName: req.user.businessName || "",
+      address: req.user.address || "",
+      phone: req.user.phone || "",
+    });
   } catch (error) {
+    console.error("GET ME ERROR:", error);
     res.status(500).json({ message: "Server Error" });
   }
 };
@@ -88,7 +101,38 @@ exports.getMe = async (req, res) => {
 //@access Private
 exports.updateUserProfile = async (req, res) => {
   try {
+    const user = req.user; 
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update fields only if provided
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.businessName = req.body.businessName || user.businessName;
+    user.address = req.body.address || user.address;
+    user.phone = req.body.phone || user.phone;
+
+    // Password update (optional)
+    if (req.body.password) {
+      user.password = req.body.password; // will be hashed by pre-save middleware
+    }
+
+    const updatedUser = await user.save();
+
+    res.status(200).json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      businessName: updatedUser.businessName,
+      address: updatedUser.address,
+      phone: updatedUser.phone,
+      token: generateToken(updatedUser._id), // optional but recommended
+    });
+
   } catch (error) {
+    console.error("UPDATE PROFILE ERROR:", error);
     res.status(500).json({ message: "Server Error" });
   }
 };
