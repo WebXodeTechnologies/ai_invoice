@@ -6,7 +6,7 @@ const connectDB = require("./config/db");
 
 const authRoutes = require('./routes/authRoute')
 const invoiceRoutes = require('./routes/invoiceRoute')
-
+const aiRoutes = require('./routes/aiRoutes')
 
 const app = express();
 
@@ -31,6 +31,7 @@ app.use(express.json());
 // Routes here 
 app.use("/api/auth", authRoutes);
 app.use("/api/invoices", invoiceRoutes);
+app.use("/api/ai", aiRoutes);
 
 
 // start server
