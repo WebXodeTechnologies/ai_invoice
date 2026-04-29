@@ -92,7 +92,7 @@ const Login = () => {
           <div className="bg-blue-600 p-2 rounded-lg">
             <FileText size={24} />
           </div>
-          <span>Inovice Gen</span>
+          <span>AI Inovice App</span>
         </div>
 
         <div className="relative z-10">
@@ -115,7 +115,7 @@ const Login = () => {
         </div>
 
         <p className="text-slate-500 text-sm">
-          © 2026 InvoiceGen Inc. All rights reserved.
+          © 2026 AI Invoice app Inc. All rights reserved.
         </p>
       </div>
 
