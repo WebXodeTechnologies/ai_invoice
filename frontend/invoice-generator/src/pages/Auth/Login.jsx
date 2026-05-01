@@ -62,24 +62,57 @@ const Login = () => {
     );
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError("");
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!isFormValid()) return;
 
-    try {
-      const response = await axiosInstance.post(API_PATHS.LOGIN, formData);
-      login(response.data.user, response.data.token);
-      navigate("/dashboard");
-    } catch (err) {
-      setError(
-        err.response?.data?.message ||
-          "Login failed. Please check your credentials.",
-      );
-    } finally {
-      setIsLoading(false);
+  setIsLoading(true);
+  setError("");
+
+  console.log("🚀 Attempting Login with:", formData.email);
+
+  try {
+    const submissionData = {
+      email: formData.email.trim(),
+      password: formData.password,
+    };
+
+    // DEBUG 1: Check the URL being hit
+    console.log("🔗 Hitting API Path:", API_PATHS.LOGIN);
+
+    const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, submissionData);
+    
+    // DEBUG 2: Inspect the full response from backend
+    console.log("📥 Full Backend Response:", response.data);
+
+    const { user, token } = response.data;
+    
+    if (token) {
+        console.log("✅ Token found! Executing login context...");
+        login(user, token);
+        navigate("/dashboard");
+    } else {
+        console.warn("⚠️ Response success, but NO TOKEN found. Check backend response structure.");
     }
-  };
+  } catch (err) {
+    // DEBUG 3: Inspect the error object
+    console.error("❌ Login Error Object:", err);
+    
+    if (err.response) {
+      console.error("❌ Backend Error Data:", err.response.data);
+      console.error("❌ HTTP Status Code:", err.response.status);
+    } else if (err.request) {
+      console.error("❌ No response received. Is the server running on port 8000?");
+    }
+
+    const message = err.response?.data?.message || "Invalid email or password.";
+    setError(message);
+    setFormData(prev => ({ ...prev, password: "" }));
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen w-full flex bg-white">
@@ -92,7 +125,7 @@ const Login = () => {
           <div className="bg-blue-600 p-2 rounded-lg">
             <FileText size={24} />
           </div>
-          <span>AI Inovice App</span>
+          <span>AI Invoice App</span>
         </div>
 
         <div className="relative z-10">
