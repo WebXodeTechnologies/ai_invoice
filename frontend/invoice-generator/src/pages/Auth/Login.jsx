@@ -77,36 +77,44 @@ const Login = () => {
       password: formData.password,
     };
 
-    // DEBUG 1: Check the URL being hit
-    console.log("🔗 Hitting API Path:", API_PATHS.LOGIN);
+    // Corrected the path to match your nested API_PATHS object
+    console.log("🔗 Hitting API Path:", API_PATHS.AUTH.LOGIN);
 
     const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, submissionData);
     
-    // DEBUG 2: Inspect the full response from backend
     console.log("📥 Full Backend Response:", response.data);
 
-    const { user, token } = response.data;
+    /**
+     * FIX: Rest Operator Mapping
+     * Since your backend returns { _id, name, email, token, ... } 
+     * we extract 'token' and group everything else into 'userData'
+     */
+    const { token, ...userData } = response.data;
     
     if (token) {
-        console.log("✅ Token found! Executing login context...");
-        login(user, token);
+        console.log("✅ Token found! User data mapped:", userData);
+        
+        // Pass the correctly shaped data to your AuthContext
+        login(userData, token); 
+        
         navigate("/dashboard");
     } else {
         console.warn("⚠️ Response success, but NO TOKEN found. Check backend response structure.");
+        setError("Authentication failed: No token received.");
     }
   } catch (err) {
-    // DEBUG 3: Inspect the error object
     console.error("❌ Login Error Object:", err);
     
     if (err.response) {
       console.error("❌ Backend Error Data:", err.response.data);
-      console.error("❌ HTTP Status Code:", err.response.status);
     } else if (err.request) {
-      console.error("❌ No response received. Is the server running on port 8000?");
+      console.error("❌ No response received. Server might be down.");
     }
 
     const message = err.response?.data?.message || "Invalid email or password.";
     setError(message);
+    
+    // Clear password for security on failed attempt
     setFormData(prev => ({ ...prev, password: "" }));
   } finally {
     setIsLoading(false);
