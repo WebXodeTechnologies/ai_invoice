@@ -126,7 +126,7 @@ const Sidebar = ({ isOpen, isMobile, setOpen }) => {
                   <span className="text-[10px] font-bold text-blue-600">84%</span>
                 </div>
                 <div className="h-1.5 w-full bg-zinc-200 rounded-full overflow-hidden">
-                  <div className="h-full w-[84%] bg-gradient-to-r from-blue-500 to-blue-600 rounded-full group-hover:from-blue-600 group-hover:to-indigo-600 transition-all" />
+                  <div className="h-full w-[84%] bg-linear-to-r from-blue-500 to-blue-600 rounded-full group-hover:from-blue-600 group-hover:to-indigo-600 transition-all" />
                 </div>
                 <p className="text-[11px] text-zinc-400 mt-3 font-medium leading-tight group-hover:text-zinc-500 transition-colors">
                   You've used <span className="text-zinc-900 font-bold">1,240</span> of 1,500 monthly AI scans.
