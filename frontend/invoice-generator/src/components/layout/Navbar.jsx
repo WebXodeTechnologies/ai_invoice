@@ -6,7 +6,6 @@ import {
   Search,
   ChevronDown,
   Zap,
-  Shield,
   Menu,
   X,
   Clock,
@@ -14,13 +13,13 @@ import {
 import { useNavigate } from "react-router-dom";
 import ProfileDropdown from "./ProfileDropdown";
 import { notificationsData } from "../../utils/data";
+import Button from "../ui/Button"; // Import your custom button
 
 const Navbar = ({ isMobile, sidebarOpen, setSidebarOpen }) => {
   const navigate = useNavigate();
   const [showQuickActions, setShowQuickActions] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
 
-  // Logic to show the red dot only if there are unread items
   const unreadCount = notificationsData.filter((n) => n.unread).length;
 
   const handleFullscreen = () => {
@@ -38,14 +37,14 @@ const Navbar = ({ isMobile, sidebarOpen, setSidebarOpen }) => {
         {isMobile && (
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 hover:bg-zinc-100 rounded-xl transition-colors border border-zinc-200"
+            className="p-2 hover:bg-zinc-100 rounded-xl transition-colors border border-zinc-200 text-zinc-600"
           >
             {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         )}
       </div>
 
-      {/* Center Section: Search Bar (Zinc-800 focus) */}
+      {/* Center Section: Search Bar */}
       <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-full max-w-md">
         <div className="flex items-center bg-zinc-100/80 border border-zinc-200 rounded-2xl px-4 py-2 focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:bg-white focus-within:border-zinc-400 transition-all w-full">
           <Search size={16} className="text-zinc-500" />
@@ -59,19 +58,23 @@ const Navbar = ({ isMobile, sidebarOpen, setSidebarOpen }) => {
 
       {/* Right Section: Action Tools */}
       <div className="flex items-center gap-2 md:gap-4 z-10">
-        {/* Quick Actions */}
+
+        {/* Quick Actions using Custom Button Component */}
         <div className="relative">
-          <button
+          <Button
+            variant="primary"
+            size="medium"
+            icon={Plus}
             onClick={() => setShowQuickActions(!showQuickActions)}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-lg shadow-blue-200 active:scale-95"
+            className="group"
           >
-            <Plus size={16} />
             <span className="hidden sm:inline">Quick Action</span>
             <ChevronDown
               size={14}
-              className={`transition-transform duration-200 ${showQuickActions ? "rotate-180" : ""}`}
+              className={`ml-2 transition-transform duration-200 ${showQuickActions ? "rotate-180" : ""
+                }`}
             />
-          </button>
+          </Button>
 
           {showQuickActions && (
             <>
@@ -106,7 +109,7 @@ const Navbar = ({ isMobile, sidebarOpen, setSidebarOpen }) => {
           )}
         </div>
 
-        {/* Notifications & Tools */}
+        {/* Notifications & Tools Area */}
         <div className="flex items-center bg-zinc-50 border border-zinc-200 rounded-xl p-1 gap-1">
           <button
             onClick={handleFullscreen}
@@ -118,7 +121,10 @@ const Navbar = ({ isMobile, sidebarOpen, setSidebarOpen }) => {
           <div className="relative">
             <button
               onClick={() => setShowNotifications(!showNotifications)}
-              className={`p-2 rounded-lg transition-all relative ${showNotifications ? "bg-white text-blue-600 shadow-sm" : "text-zinc-500 hover:text-blue-600 hover:bg-white"}`}
+              className={`p-2 rounded-lg transition-all relative ${showNotifications
+                  ? "bg-white text-blue-600 shadow-sm"
+                  : "text-zinc-500 hover:text-blue-600 hover:bg-white"
+                }`}
             >
               <Bell size={18} />
               {unreadCount > 0 && (
@@ -142,7 +148,7 @@ const Navbar = ({ isMobile, sidebarOpen, setSidebarOpen }) => {
                     </span>
                   </div>
 
-                  <div className="max-h-95 overflow-y-auto no-scrollbar">
+                  <div className="max-h-80 overflow-y-auto no-scrollbar">
                     {notificationsData.map((notif) => {
                       const IconComponent = notif.icon;
                       return (
@@ -183,6 +189,7 @@ const Navbar = ({ isMobile, sidebarOpen, setSidebarOpen }) => {
             )}
           </div>
         </div>
+
         <div className="pl-2 border-l border-zinc-200">
           <ProfileDropdown />
         </div>

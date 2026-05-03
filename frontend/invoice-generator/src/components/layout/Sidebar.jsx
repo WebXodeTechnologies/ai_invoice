@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard, FileText, Users, Sparkles,
@@ -46,8 +46,11 @@ const Sidebar = ({ isOpen, isMobile, setOpen }) => {
           </button>
         )}
 
-        {/* Brand Identity */}
-        <div className={`h-16 flex items-center px-6 gap-3 mb-2 ${isCollapsed ? 'justify-center px-0' : ''}`}>
+        {/* Brand Identity - Now Wrapped in Link */}
+        <Link
+          to="/dashboard"
+          className={`h-16 flex items-center px-6 gap-3 mb-2 hover:opacity-80 transition-opacity ${isCollapsed ? 'justify-center px-0' : ''}`}
+        >
           <div className="bg-blue-600 p-2.5 rounded-xl shrink-0 shadow-lg shadow-blue-100">
             <Briefcase size={20} className="text-white" />
           </div>
@@ -57,7 +60,7 @@ const Sidebar = ({ isOpen, isMobile, setOpen }) => {
               <span className="text-[10px] text-blue-600 font-extrabold uppercase tracking-widest mt-1">Powered by AI</span>
             </div>
           )}
-        </div>
+        </Link>
 
         {/* Nav Content */}
         <div className="flex-1 px-3 space-y-8 overflow-y-auto py-6 no-scrollbar">
@@ -108,13 +111,10 @@ const Sidebar = ({ isOpen, isMobile, setOpen }) => {
           ))}
         </div>
 
-        {/* Space for any bottom-fixed item if needed later */}
-        {/* Footer Area - Usage & Support */}
+        {/* Footer Area */}
         <div className="p-4 mt-auto">
           {!isCollapsed ? (
             <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500">
-
-              {/* Usage Progress Card */}
               <div className="bg-zinc-50 border border-zinc-100 rounded-2xl p-4 shadow-sm group hover:border-blue-200 transition-all">
                 <div className="flex justify-between items-center mb-3">
                   <div className="flex items-center gap-2">
@@ -125,30 +125,23 @@ const Sidebar = ({ isOpen, isMobile, setOpen }) => {
                   </div>
                   <span className="text-[10px] font-bold text-blue-600">84%</span>
                 </div>
-
-                {/* Progress Bar */}
                 <div className="h-1.5 w-full bg-zinc-200 rounded-full overflow-hidden">
-                  <div className="h-full w-[84%] bg-linear-to-r from-blue-500 to-blue-600 rounded-full group-hover:from-blue-600 group-hover:to-indigo-600 transition-all" />
+                  <div className="h-full w-[84%] bg-gradient-to-r from-blue-500 to-blue-600 rounded-full group-hover:from-blue-600 group-hover:to-indigo-600 transition-all" />
                 </div>
-
                 <p className="text-[11px] text-zinc-400 mt-3 font-medium leading-tight group-hover:text-zinc-500 transition-colors">
                   You've used <span className="text-zinc-900 font-bold">1,240</span> of 1,500 monthly AI scans.
                 </p>
               </div>
-
-              {/* Support / Docs Link */}
               <button className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white border border-zinc-200 rounded-xl text-xs font-bold text-zinc-600 hover:bg-zinc-50 hover:border-zinc-300 transition-all group">
                 <HelpCircle size={14} className="text-zinc-400 group-hover:text-blue-600" />
                 Help & Documentation
               </button>
-
             </div>
           ) : (
-            /* Collapsed View - Simple Indicator */
             <div className="flex flex-col items-center gap-4">
-              <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-zinc-50 border border-zinc-100 text-blue-600 hover:bg-blue-50 cursor-pointer transition-all">
+              <Link to="/dashboard" className="h-10 w-10 flex items-center justify-center rounded-xl bg-zinc-50 border border-zinc-100 text-blue-600 hover:bg-blue-50 cursor-pointer transition-all">
                 <Zap size={18} fill="currentColor" />
-              </div>
+              </Link>
             </div>
           )}
         </div>

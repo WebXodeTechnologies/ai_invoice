@@ -56,7 +56,7 @@ const DashboardLayout = ({ children }) => {
 
         {/* Page Content Area */}
         <main className="p-4 md:p-6 lg:p-8 flex-1">
-          <div className="max-w-7xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             {children}
           </div>
         </main>
