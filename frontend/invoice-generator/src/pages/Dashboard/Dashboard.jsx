@@ -48,7 +48,7 @@ const Dashboard = () => {
 
       {/* Task Section */}
       <div className="space-y-4">
-        <h4 className="text-[10px] font-bold text-zinc-400 uppercase tracking-[0.2em]">Priority Tasks</h4>
+        <h4 className="text-[12px] font-bold text-zinc-600 uppercase tracking-[0.2em]">Priority Tasks</h4>
         <TaskUpdates />
       </div>
     </div>
