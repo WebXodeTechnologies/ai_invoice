@@ -1,6 +1,10 @@
 import React from 'react';
-import { TrendingUp, Clock, CheckCircle2, Wallet, Users, UserPlus, UserMinus, Activity, FileText, Wallet2 } from 'lucide-react';
+import { 
+  CheckCircle2, Clock, Wallet2, Users, 
+  UserPlus, UserMinus, Activity, FileText
+} from 'lucide-react';
 
+// eslint-disable-next-line no-unused-vars
 const StatCard = ({ title, value, subValue, icon: Icon, trend, colorClass }) => (
   <div className="bg-white p-5 rounded-2xl border border-zinc-100 shadow-sm hover:shadow-md transition-all group">
     <div className="flex justify-between items-start mb-4">
