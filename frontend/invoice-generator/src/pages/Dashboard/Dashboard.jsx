@@ -20,14 +20,16 @@ const Dashboard = () => {
       <SummaryGrid />
 
       {/* 3rd Row: Chart & Recent Clients */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        <div className="lg:col-span-2">
-          <RevenueChart />
-        </div>
-        <div>
-          <RecentClients />
-        </div>
-      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+  {/* Row 1 below Row 2 on mobile, side-by-side on lg screens */}
+  <div className="w-full">
+    <RevenueChart />
+  </div>
+  
+  <div className="w-full">
+    <RecentClients />
+  </div>
+</div>
 
       {/* AI Insights Section */}
       <AIInsights />
