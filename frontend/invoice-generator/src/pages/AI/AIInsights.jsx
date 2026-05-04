@@ -1,4 +1,3 @@
-import React from 'react';
 import { Sparkles, Zap, ArrowRight, Stars } from 'lucide-react';
 import Button from '../../components/ui/Button';
 
@@ -29,7 +28,7 @@ const AIInsights = () => {
 
   return (
     <div className="relative overflow-hidden rounded-[2.5rem] bg-white border border-zinc-100 p-8 shadow-2xl shadow-zinc-200/50">
-      
+
       {/* Subtle Background Accent */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-blue-50/50 to-transparent pointer-events-none" />
 
@@ -54,9 +53,9 @@ const AIInsights = () => {
         {/* Horizontal Insights Row */}
         <div className="flex flex-col lg:flex-col gap-4">
           {insights.map((item) => (
-            <div 
-              key={item.id} 
-              className="flex-1 group relative p-5 rounded-[2rem] bg-zinc-50/50 border border-zinc-100 hover:bg-white hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-500"
+            <div
+              key={item.id}
+              className="flex-1 group relative p-5 rounded-4xl bg-zinc-50/50 border border-zinc-100 hover:bg-white hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-500"
             >
               <div className="flex items-start justify-between mb-4">
                 <span className="text-4xl group-hover:scale-125 transition-transform duration-500">
@@ -66,7 +65,7 @@ const AIInsights = () => {
                   {item.label}
                 </span>
               </div>
-              
+
               <p className="text-sm font-bold text-zinc-700 leading-snug">
                 {item.text}
               </p>

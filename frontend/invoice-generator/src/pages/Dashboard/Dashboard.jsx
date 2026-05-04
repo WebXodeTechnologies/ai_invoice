@@ -9,6 +9,7 @@ import RevenueChart from '../../components/dashboard/RevenueChart';
 import RecentClients from '../../components/dashboard/RecentClients';
 import AIInsights from '../AI/AIInsights';
 import { TaskUpdates } from '../../components/dashboard/AiInsights';
+import FinancialReports from '../../components/dashboard/FinancialReports';
 
 const Dashboard = () => {
   return (
@@ -18,6 +19,9 @@ const Dashboard = () => {
 
       {/* 1st & 2nd Rows: Stats */}
       <SummaryGrid />
+
+      {/* AI Insights Section */}
+      <AIInsights />
 
       {/* 3rd Row: Chart & Recent Clients */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -31,16 +35,15 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* AI Insights Section */}
-      <AIInsights />
+
 
       {/* Fourth Row: Payments Table (Simplified for brevity) */}
       <div className="bg-white rounded-2xl border border-zinc-100 shadow-sm p-6 overflow-hidden">
         <div className="flex justify-between items-center mb-6">
-          <h4 className="text-sm font-bold text-zinc-800">Recent Client Payments</h4>
+          <h4 className="text-sm font-bold text-zinc-800">Reports</h4>
           <Button size="small" variant="outline">View All</Button>
         </div>
-        {/* Payment table goes here... */}
+        <FinancialReports/>
       </div>
 
       {/* Task Section */}
