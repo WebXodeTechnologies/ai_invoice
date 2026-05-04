@@ -16,8 +16,8 @@ const Sidebar = ({ isOpen, isMobile, setOpen }) => {
       group: "Management",
       items: [
         { label: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
-        { label: "Invoices", icon: FileText, path: "/invoices" },
         { label: "Clients", icon: Users, path: "/clients" },
+         { label: "Invoices", icon: FileText, path: "/invoices" },
         { label: "AI Insights", icon: Sparkles, path: "/ai-insights", pro: true },
         { label: "Settings", icon: Settings, path: "/settings" },
       ]

@@ -3,8 +3,8 @@ import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
 const DashboardLayout = ({ children }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false); // Mobile toggle
-  const [isCollapsed, setIsCollapsed] = useState(false); // Desktop collapse
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   // 1. Single source of truth for responsive state

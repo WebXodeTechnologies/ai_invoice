@@ -16,6 +16,7 @@ import AllInvoices from "./pages/Invoices/AllInvoices";
 import CreateInvoice from "./pages/Invoices/CreateInvoice";
 import InvoiceDetail from "./pages/Invoices/InvoiceDetail";
 import ClientsPage from "./pages/Clients/ClientsPage.jsx";
+
 import AIInsights from "./pages/AI/AIInsights.jsx";
 import SettingsPage from "./pages/Settings/SettingsPage.jsx";
 
@@ -41,7 +42,7 @@ const App = () => {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="invoices" element={<AllInvoices />} />
             <Route path="invoices/new" element={<CreateInvoice />} />
-            <Route path="invoices/:id" element={<InvoiceDetail />} /> 
+            <Route path="invoices/:id" element={<InvoiceDetail />} />
             <Route path="clients" element={<ClientsPage />} />
             <Route path="ai-insights" element={<AIInsights />} />
             <Route path="settings" element={<SettingsPage />} />
@@ -58,12 +59,12 @@ const App = () => {
         </Routes>
       </Router>
 
-      <Toaster 
-        position="top-right"
-        toastOptions={{ 
-          className: "rounded-2xl border border-slate-100 shadow-xl", 
-          style: { fontSize: "14px", padding: '12px 20px' }, 
-        }} 
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          className: "rounded-2xl border border-slate-100 shadow-xl shadow-blue-900/5",
+          style: { fontSize: "12px", padding: '16px 24px', color: '#1e293b', fontWeight: '700' },
+        }}
       />
     </AuthProvider>
   );
