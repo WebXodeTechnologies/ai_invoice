@@ -8,7 +8,7 @@ import { SummaryGrid } from '../../components/dashboard/SummaryGrid';
 import RevenueChart from '../../components/dashboard/RevenueChart';
 import RecentClients from '../../components/dashboard/RecentClients';
 import AIInsights from '../AI/AIInsights';
-import { TaskUpdates } from '../../components/dashboard/AiInsights';
+import  TaskUpdates  from '../../components/dashboard/TaskUpdates';
 import FinancialReports from '../../components/dashboard/FinancialReports';
 
 const Dashboard = () => {
