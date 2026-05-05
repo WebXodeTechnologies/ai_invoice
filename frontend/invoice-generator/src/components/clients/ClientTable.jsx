@@ -6,7 +6,7 @@ const ClientTable = ({ clients, onEdit, onDelete, onView }) => {
     <div className="bg-white rounded-[2.5rem] border border-zinc-100 shadow-xl shadow-blue-900/5 overflow-hidden">
       <div className="overflow-x-auto no-scrollbar">
         {/* min-w-900px ensures it looks perfect on 1024px laptop screens */}
-        <table className="w-full text-left border-collapse min-w-[900px]">
+        <table className="w-full text-left border-collapse min-w-225">
           <thead>
             <tr className="bg-blue-50/30 border-b border-zinc-100/50">
               <th className="px-8 py-5 text-[12px] font-black text-blue-900/50 uppercase tracking-[0.15em]">Client Entity</th>
@@ -25,7 +25,7 @@ const ClientTable = ({ clients, onEdit, onDelete, onView }) => {
                 {/* 1. Identity */}
                 <td className="px-8 py-6">
                   <div className="flex items-center gap-4">
-                    <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-100 group-hover:scale-110 transition-all duration-500">
+                    <div className="h-11 w-11 rounded-2xl bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-100 group-hover:scale-110 transition-all duration-500">
                       {client.type === "Foreign" ? <Globe size={18} /> : <span className="text-[14px] font-black">{client.name[0]}</span>}
                     </div>
                     <div>
@@ -48,11 +48,10 @@ const ClientTable = ({ clients, onEdit, onDelete, onView }) => {
 
                 {/* 3. Tax Class */}
                 <td className="px-8 py-6 text-center">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[11px] font-black uppercase tracking-tight transition-all duration-300 group-hover:bg-white
-                    ${client.type === 'GST' ? 'bg-emerald-50 border-emerald-100 text-emerald-700' : 
-                      client.type === 'Foreign' ? 'bg-blue-50 border-blue-100 text-blue-700' : 
-                      'bg-amber-50 border-amber-100 text-amber-700'
-                    }">
+                  <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[11px] font-black uppercase tracking-tight transition-all duration-300 group-hover:bg-white ${client.type === 'GST' ? 'bg-emerald-50 border-emerald-100 text-emerald-700' :
+                      client.type === 'Foreign' ? 'bg-blue-50 border-blue-100 text-blue-700' :
+                        'bg-amber-50 border-amber-100 text-amber-700'
+                    }`}>
                     <Receipt size={12} />
                     {client.type}
                   </div>
