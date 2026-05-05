@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
-import { 
-  UserPlus, ChevronLeft, Upload, Building2, MapPin, 
+import {
+  UserPlus, ChevronLeft, Upload, Building2, MapPin,
   ChevronDown, CheckCircle2, CreditCard, Globe, Info
 } from 'lucide-react';
 
 const AddClient = ({ onSave, onCancel, initialData }) => {
   const [formData, setFormData] = useState(initialData || {
-    // Identity
+
     firstName: '', lastName: '', email: '', contact: '',
-    // Company
     companyName: '', niche: '',
-    // Billing Logic
-    clientType: 'Local', // Local vs International
-    taxId: '', // GSTIN for Local, VAT/Tax ID for International
+    clientType: 'Local',
+    taxId: '',
     currency: 'INR',
-    paymentTerms: 'Net 15', // Default payment window
-    // Address
+    paymentTerms: 'Net 15',
     addressLine1: '', addressLine2: '', state: '', city: '', pincode: '',
     country: 'India'
   });
@@ -27,7 +24,7 @@ const AddClient = ({ onSave, onCancel, initialData }) => {
 
   return (
     <div className="w-full min-h-screen bg-[#F8FAFC] p-4 sm:p-8 lg:p-12 font-sans text-slate-900">
-      
+
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-8 ">
         <div className="flex items-center gap-3">
@@ -46,14 +43,14 @@ const AddClient = ({ onSave, onCancel, initialData }) => {
       </div>
 
       <form onSubmit={(e) => { e.preventDefault(); onSave(formData); }} className="space-y-6">
-        
+
         {/* Section 1: Client Type & Billing Core */}
         <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm ring-1 ring-slate-100">
           <div className="flex items-center gap-2 mb-6 text-indigo-600">
             <Globe size={18} />
             <h2 className="font-bold text-slate-800">Billing Jurisdiction</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="space-y-1.5">
               <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Client Type</label>
@@ -142,16 +139,16 @@ const AddClient = ({ onSave, onCancel, initialData }) => {
             <MapPin size={18} />
             <h2 className="font-bold text-slate-800">Address Details</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-             <div className="space-y-1.5">
-                <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Street Address (Line 1)</label>
-                <input name="addressLine1" onChange={handleChange} className="clean-input" placeholder="Building, Suite, Street" />
-             </div>
-             <div className="space-y-1.5">
-                <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Area (Line 2)</label>
-                <input name="addressLine2" onChange={handleChange} className="clean-input" placeholder="Landmark, Area" />
-             </div>
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Street Address (Line 1)</label>
+              <input name="addressLine1" onChange={handleChange} className="clean-input" placeholder="Building, Suite, Street" />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Area (Line 2)</label>
+              <input name="addressLine2" onChange={handleChange} className="clean-input" placeholder="Landmark, Area" />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
